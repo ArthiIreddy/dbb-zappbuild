@@ -20,9 +20,11 @@ def deleteTestBranch = """
     git branch -D automation
 """
 def job = ['bash', '-c', deleteTestBranch].execute()
-job.waitFor()
+def outputStream = new StringBuffer();
+job.waitForProcessOutput(outputStream, System.err)
+
 def deleteBranch = job.in.text
-println "Output:  $deleteBranch"
+println "Output: $deleteBranch"
 
 if(job.exitValue()!=0)
 println "Output:  $deleteBranch"
