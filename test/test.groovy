@@ -29,6 +29,7 @@ cli.with
    i(longOpt:'impactFiles', 'Impact build files for verification', args:1)
    n(longOpt:'numFullFiles', 'Number of files expected for full build verification', args:1)
    m(longOpt:'numImpactFiles', 'Number of files expected for impact build verification', args:1)
+   c(longOpt: 'programFile', 'Folder of the program to edit', args: 2, required: true)
 }
 
 def options = cli.parse(args)
@@ -53,6 +54,7 @@ if (options.f) properties.fullFiles = options.f
 if (options.i) properties.impactFiles = options.i
 if (options.n) properties.numFullFiles = options.n
 if (options.m) properties.numImpactFiles = options.m
+if (options.c) properties.programFile = options.c
 
 // Load test.properties
 properties.load(new File("${getScriptDir()}/test-conf/test.properties"))
