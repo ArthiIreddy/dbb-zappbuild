@@ -36,7 +36,7 @@ assert outputStream.contains("Build State : CLEAN") &&
       !outputStream.contains("Total files processed : 0") &&
        outputStream.contains("Total files processed : ${properties.numImpactFiles}") : "///***IMPACT BUILD FAILED OR TOTAL FILES PROCESSED IS NOT EQUAL TO ${properties.numImpactFiles}.\n HERE IS THE OUTPUT FROM IMPACT BUILD FOR ${properties.programFile} \n$outputStream\n"
 
-def files = options.files
+def files = properties.impactFiles
 List<String> fileList = []
 if (files) {
     fileList.addAll(files.trim().split(','))
