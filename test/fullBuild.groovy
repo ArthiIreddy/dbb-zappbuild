@@ -13,6 +13,7 @@ println "build properties = ${properties.list()}"
 @param repoPath              Path to ZAppBuild Repo
 @param branchName            Feature branch to create a test(automation) branch against
 @param app                   Application that is being tested (example: MortgageApplication)
+@param hlq              hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)
 @param serverURL             Server URL example(https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/)
 @param userName              User for server
 @param password              Password for server

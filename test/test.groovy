@@ -25,11 +25,11 @@ cli.with
    q(longOpt: 'hlq', 'hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)', args: 1, required: true)
    u(longOpt: 'userName', 'User for server', args: 1, required: true)
    p(longOpt: 'password', 'Password for server', args: 1, required: true)
-   f(longOpt:'fullFiles', 'Full build files for verification', args:1)
-   i(longOpt:'impactFiles', 'Impact build files for verification', args:1)
-   n(longOpt:'numFullFiles', 'Number of files expected for full build verification', args:1)
-   m(longOpt:'numImpactFiles', 'Number of files expected for impact build verification', args:1)
-   c(longOpt: 'programFile', 'Folder of the program to edit', args: 2, required: true)
+   f(longOpt: 'fullFiles', 'Full build files for verification', args:1, required: true)
+   i(longOpt: 'impactFiles', 'Impact build files for verification', args:1, required: true)
+   n(longOpt: 'numFullFiles', 'Number of files expected for full build verification', args:1, required: true)
+   m(longOpt: 'numImpactFiles', 'Number of files expected for impact build verification', args:1, required: true)
+   c(longOpt: 'programFile', 'Folder of the program to edit (example: /bms/epsmort.bms)', args: 2, required: true)
 }
 
 def options = cli.parse(args)
