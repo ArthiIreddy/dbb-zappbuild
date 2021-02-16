@@ -4,7 +4,7 @@ Test folder is designed to help test samples like the Mortgage Application again
 ## Repository Legend
 Folder/File | Description | Documentation Link
 --- | --- | ---
-samples/MortgageApplication | This folder contains modified language scripts used to execute impact build by replacing these modified files with the original language files | [test/samples/MortgageApplication/README.md](test/samples/MortgageApplication/README.md)
+samples/MortgageApplication | This folder contains modified language scripts used to execute impact build by replacing these modified files with the original language files | [samples/MortgageApplication/README.md](samples/MortgageApplication/README.md)
 test-conf | This folder contains global configuration properties used by test.groovy | [test-conf/README.md](test-conf/README.md)   
 test.groovy  | This is the main build script that is called to start the test process |
 initialization.groovy | This script that is called by test.groovy to clean “automation” test branch created for testing purposes from the feature branch that‘s to be tested and hlq from the previous run | 
