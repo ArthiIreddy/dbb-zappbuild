@@ -58,17 +58,20 @@ utility options
 This script that is called by test.groovy to clean “automation” test branch created for testing purposes from the feature branch that‘s to be tested and hlq from the previous run.
 
 ```
-Required arguments that must be present during each invocation of `initialization.groovy` :
+Required arguments that must be present during each invocation of `test.groovy` :
  -r --repoPath <arg>   Path to the cloned/forked zAppBuild repository
  -b --branchName <arg> Feature Branch that needs to be tested 
  -q --hlq <arg> hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)
 ```
 
 ## fullBuild.groovy
-This script is called by test.groovy to run a full build by creating a new “automation” branch from the feature branch specified in the command line argument 
+This script is called by test.groovy to run a full build by creating a new “automation” branch from the feature branch specified in the command line argument. It verifies the below requirments
+- Full build ran clean
+- Number of expected build files passsed via command line matches the number of files build during the full build in the console.
+- Build files expected passsed via command line matches the build files during the full build in the console.
 
 ```
-Required arguments that must be present during each invocation of `fullBuild.groovy` :
+Required arguments that must be present during each invocation of `test.groovy` :
  -r --repoPath <arg>   Path to the cloned/forked zAppBuild repository
  -b --branchName <arg> Feature Branch that needs to be tested 
  -a --app <arg> Application that is being tested (example: MortgageApplication)
@@ -81,10 +84,13 @@ Required arguments that must be present during each invocation of `fullBuild.gro
 ```
 
 ## impactBuild.groovy
-This script that is called by test.groovy to run an impact build against the program file specified in the command line argument
+This script that is called by test.groovy to run an impact build against the program file specified in the command line argument. It verifies the below requirments
+- Impact build ran clean
+- Number of expected build files passsed via command line matches the number of files build during the impact build in the console.
+- Build files expected passsed via command line matches the build files during the impact build in the console.
 
 ```
-Required arguments that must be present during each invocation of `impactBuild.groovy` :
+Required arguments that must be present during each invocation of `test.groovy` :
  -r --repoPath <arg>   Path to the cloned/forked zAppBuild repository
  -b --branchName <arg> Feature Branch that needs to be tested 
  -a --app <arg> Application that is being tested (example: MortgageApplication)
