@@ -58,7 +58,7 @@ utility options
 This script that is called by test.groovy to clean “automation” test branch created for testing purposes from the feature branch that‘s to be tested and hlq from the previous run.
 
 ```
-Required arguments that must be present during each invocation of `test.groovy` :
+Required arguments that must be present during each invocation of `test.groovy`
  -r --repoPath <arg>   Path to the cloned/forked zAppBuild repository
  -b --branchName <arg> Feature Branch that needs to be tested 
  -q --hlq <arg> hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)
@@ -71,7 +71,7 @@ This script is called by test.groovy to run a full build by creating a new “au
 - Build files expected passsed via command line matches the build files during the full build in the console.
 
 ```
-Required arguments that must be present during each invocation of `test.groovy` :
+Required arguments that must be present during each invocation of `test.groovy`
  -r --repoPath <arg>   Path to the cloned/forked zAppBuild repository
  -b --branchName <arg> Feature Branch that needs to be tested 
  -a --app <arg> Application that is being tested (example: MortgageApplication)
@@ -90,7 +90,7 @@ This script that is called by test.groovy to run an impact build against the pro
 - Build files expected passsed via command line matches the build files during the impact build in the console.
 
 ```
-Required arguments that must be present during each invocation of `test.groovy` :
+Required arguments that must be present during each invocation of `test.groovy`
  -r --repoPath <arg>   Path to the cloned/forked zAppBuild repository
  -b --branchName <arg> Feature Branch that needs to be tested 
  -a --app <arg> Application that is being tested (example: MortgageApplication)
