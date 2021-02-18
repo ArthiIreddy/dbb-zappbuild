@@ -5,7 +5,7 @@ import com.ibm.dbb.build.*
 import com.ibm.jzos.ZFile
  
 @Field BuildProperties properties = BuildProperties.getInstance()
-println "build properties = ${properties.list()}"
+println "********Executing initialization script using these build properties =\n ${properties.list()} \n"
 /***************************************************************************************
 1. Discards the changes on the automation test branch
 2. Checkout's out the feature branch ${branchName}

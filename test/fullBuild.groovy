@@ -4,7 +4,7 @@ import com.ibm.dbb.*
 import com.ibm.dbb.build.*
 
 @Field BuildProperties properties = BuildProperties.getInstance()
-println "build properties = ${properties.list()}"
+println "********Executing full build using these build properties =\n ${properties.list()} \n"
 /****************************************************************************************
 1. Creates an automation branch from ${branchName} 
 2. Sets the values up for datasets in the datasets.properties
