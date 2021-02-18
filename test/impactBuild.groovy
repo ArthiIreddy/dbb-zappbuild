@@ -4,7 +4,7 @@ import com.ibm.dbb.*
 import com.ibm.dbb.build.*
 
 @Field BuildProperties properties = BuildProperties.getInstance()
-println "********Executing impact build using these build properties =\n ${properties.list()} \n"
+println "/////********Executing impact build using these build properties\n ${properties.list()} \n"
 /******************************************************************************************
 1. Edits the file for incremental build 
 2. Runs a incremental/impact build based on file changed
