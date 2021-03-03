@@ -37,17 +37,14 @@ process.waitForProcessOutput(outputStream, System.err)
 
 def list = properties.fullFiles
 def listA = list.split(',')
-println listA
-println listA.size()
-
-
-/*
-assert outputStream.contains("Build State : CLEAN") &&
-       outputStream.contains("Total files processed : ${properties.numFullFiles}") : "///***EITHER THE FULLBUILD FAILED OR TOTAL FILES PROCESSED ARE NOT EQUAL TO ${properties.numFullFiles}.\n HERE IS THE OUTPUT FROM FULLBUILD \n$outputStream\n"
+def numFullFiles = listA.size()
+assert outputStream.contains("Build State : CLEAN") && outputStream.contains("Total files processed : ${properties.numFullFiles}")
+	   && outputStream.contains("Total files processed : ${numFullFiles}") : "///***EITHER THE FULLBUILD FAILED OR TOTAL FILES PROCESSED ARE NOT EQUAL TO ${numFullFiles}.\n HERE IS THE OUTPUT FROM FULLBUILD \n$outputStream\n"
+	
 
 def files = properties.fullFiles
 List<String> fileList = []
 if (files) {
-    fileList.addAll(files.trim().split(',')) 
-    assert fileList.count{ i-> outputStream.contains(i) } == fileList.size() : "///***FILES PROCESSED IN THE FULLBUILD DOES NOT CONTAIN THE LIST OF FILES PASSED ${fileList}.\n HERE IS THE OUTPUT FROM FULLBUILD \n$outputStream\n"
-}*/
+  fileList.addAll(files.trim().split(',')) 
+  assert fileList.count{ i-> outputStream.contains(i) } == fileList.size() : "///***FILES PROCESSED IN THE FULLBUILD DOES NOT CONTAIN THE LIST OF FILES PASSED ${fileList}.\n HERE IS THE OUTPUT FROM FULLBUILD \n$outputStream\n"
+}
