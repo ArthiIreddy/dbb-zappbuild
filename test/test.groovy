@@ -26,7 +26,7 @@ cli.with
    u(longOpt: 'userName', 'User for server', args: 1, required: true)
    p(longOpt: 'password', 'Password for server', args: 1, required: true)
    f(longOpt: 'fullFiles', 'Full build files for verification', args:1, required: true)
-   //i(longOpt: 'impactFiles', 'Impact build files for verification', args:1, required: true)
+   i(longOpt: 'impactFiles', 'Impact build files for verification', args:1, required: true)
    c(longOpt: 'programFile', 'Path of the program to edit (example: /bms/epsmort.bms)', args: 2, required: true)
 }
 
@@ -49,7 +49,7 @@ if (options.q) properties.hlq = options.q
 if (options.u) properties.userName = options.u
 if (options.p) properties.password = options.p
 if (options.f) properties.fullFiles = options.f
-//if (options.i) properties.impactFiles = options.i
+if (options.i) properties.impactFiles = options.i
 if (options.c) properties.programFile = options.c
 
 // Load test.properties
