@@ -15,8 +15,10 @@ println "/////********EXECUTING INITIALIZATION SCRIPT USING THESE BUILD PROPERTI
 @param zRepoPath         Optional path to ZAppBuild Repo
 @param branchName       Feature branch to create a test(automation) branch against
 ****************************************************************************************/
+def deleteTestBranch
+
 if (properties.z || properties.zRepoPath){
-def deleteTestBranch = """
+deleteTestBranch = """
     cd ${properties.zRepoPath}
     git reset --hard automation
     git checkout ${properties.branchName}
@@ -26,7 +28,7 @@ def deleteTestBranch = """
   def zAppBuildDirTest = getScriptDir()
   def zAppBuildDir = zAppBuildDirTest.replace("/test","")
   println "***This is zAppBuildDir home****:" + zAppBuildDir 
-  def deleteTestBranch = """
+deleteTestBranch = """
     cd ${zAppBuildDir}
     git reset --hard automation
     git checkout ${properties.branchName}

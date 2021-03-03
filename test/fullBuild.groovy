@@ -23,8 +23,10 @@ println "/////********EXECUTING FULL BUILD USING THESE BUILD PROPERTIES\nzRepoPa
 def dbbHome = EnvVars.getHome()
 println "***This is dbb home****" + dbbHome
 
+def runFullBuild
+
 if (properties.z || properties.zRepoPath){
- def runFullBuild = """
+runFullBuild = """
     cd ${properties.zRepoPath}
     git checkout ${properties.branchName}
     git checkout -b automation ${properties.branchName}
@@ -35,7 +37,7 @@ if (properties.z || properties.zRepoPath){
     def zAppBuildDirTest = getScriptDir()
     def zAppBuildDir = zAppBuildDirTest.replace("/test","")
     println "***This is zAppBuildDir home****:" + zAppBuildDir
-    def runFullBuild = """
+ runFullBuild = """
     cd ${zAppBuildDir}
     git checkout ${properties.branchName}
     git checkout -b automation ${properties.branchName}

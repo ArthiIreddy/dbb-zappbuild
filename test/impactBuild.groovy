@@ -22,8 +22,10 @@ println "/////********EXECUTING IMPACT BUILD USING THESE BUILD PROPERTIES\nserve
 def dbbHome = EnvVars.getHome()
 println "***This is dbb home****" + dbbHome
 
+def runImpactBuild
+
 if (properties.z || properties.zRepoPath){
-    def runImpactBuild = """
+ runImpactBuild = """
     mv ${properties.zRepoPath}/test/samples/${properties.app}${properties.programFile} ${properties.zRepoPath}/samples/${properties.app}${properties.programFile}
     cd ${properties.zRepoPath}/samples/${properties.app}/
     git add .
@@ -34,7 +36,7 @@ if (properties.z || properties.zRepoPath){
     def zAppBuildDirTest = getScriptDir()
     def zAppBuildDir = zAppBuildDirTest.replace("/test","")
     println "***This is zAppBuildDir home****:" + zAppBuildDir  
-    def runImpactBuild = """
+ runImpactBuild = """
     mv ${zAppBuildDir}/test/samples/${properties.app}${properties.programFile} ${zAppBuildDir}/samples/${properties.app}${properties.programFile}
     cd ${zAppBuildDir}/samples/${properties.app}/
     git add .
