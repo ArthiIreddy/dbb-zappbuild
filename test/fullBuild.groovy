@@ -35,8 +35,10 @@ def process = ['bash', '-c', runFullBuild].execute()
 def outputStream = new StringBuffer();
 process.waitForProcessOutput(outputStream, System.err)
 
-def numFiles = properties.fullFiles.size
-println "THIS IS THE NUMBER OF FILES ${numFiles}"
+def list = properties.fullFiles
+println list "************THESE ARE THE FILES"
+println list.size() "***********THIS IS THE NUMBER OF FILES"
+
 
 /*
 assert outputStream.contains("Build State : CLEAN") &&
