@@ -24,8 +24,8 @@ println "/////********Executing full build using these build properties\n${prope
 def dbbHome = EnvVars.getHome()
 
 def zAppBuildDir = getScriptDir()
-println "***This is zAppBuildDir home****:${zAppBuildDir}"
-println "***This is dbb home****:${dbbHome}"
+println zAppBuildDir
+println dbbHome
 
 /*def runFullBuild = """
     cd ${properties.repoPath}
