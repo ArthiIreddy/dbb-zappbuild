@@ -13,12 +13,11 @@ println "/////********Executing full build using these build properties\n${prope
 @param repoPath              Path to ZAppBuild Repo
 @param branchName            Feature branch to create a test(automation) branch against
 @param app                   Application that is being tested (example: MortgageApplication)
-@param hlq              hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)
+@param hlq                   hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)
 @param serverURL             Server URL example(https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/)
 @param userName              User for server
 @param password              Password for server
 @param fullFiles             Build files for verification
-@param numFullFiles          Number of files expected for full build verification
 ******************************************************************************************/
 String dbbHome = EnvVars.getHome();
 
@@ -36,10 +35,9 @@ def outputStream = new StringBuffer();
 process.waitForProcessOutput(outputStream, System.err)
 
 def list = properties.fullFiles
-def listA = list.split(',')
-def numFullFiles = listA.size()
-assert outputStream.contains("Build State : CLEAN") && outputStream.contains("Total files processed : ${properties.numFullFiles}") && outputStream.contains("Total files processed : ${numFullFiles}") : "///***EITHER THE FULLBUILD FAILED OR TOTAL FILES PROCESSED ARE NOT EQUAL TO ${numFullFiles}.\n HERE IS THE OUTPUT FROM FULLBUILD \n$outputStream\n"
-	
+def listNew = list.split(',')
+def numFullFiles = listNew.size()
+assert outputStream.contains("Build State : CLEAN") && outputStream.contains("Total files processed : ${numFullFiles}") : "///***EITHER THE FULLBUILD FAILED OR TOTAL FILES PROCESSED ARE NOT EQUAL TO ${numFullFiles}.\n HERE IS THE OUTPUT FROM FULLBUILD \n$outputStream\n"
 
 def files = properties.fullFiles
 List<String> fileList = []

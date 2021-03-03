@@ -27,9 +27,7 @@ cli.with
    p(longOpt: 'password', 'Password for server', args: 1, required: true)
    f(longOpt: 'fullFiles', 'Full build files for verification', args:1, required: true)
    i(longOpt: 'impactFiles', 'Impact build files for verification', args:1, required: true)
-   n(longOpt: 'numFullFiles', 'Number of files expected for full build verification', args:1, required: true)
-   m(longOpt: 'numImpactFiles', 'Number of files expected for impact build verification', args:1, required: true)
-   c(longOpt: 'programFile', 'Folder of the program to edit (example: /bms/epsmort.bms)', args: 2, required: true)
+   c(longOpt: 'programFile', 'Path of the program to edit (example: /bms/epsmort.bms)', args: 2, required: true)
 }
 
 def options = cli.parse(args)
@@ -52,8 +50,6 @@ if (options.u) properties.userName = options.u
 if (options.p) properties.password = options.p
 if (options.f) properties.fullFiles = options.f
 if (options.i) properties.impactFiles = options.i
-if (options.n) properties.numFullFiles = options.n
-if (options.m) properties.numImpactFiles = options.m
 if (options.c) properties.programFile = options.c
 
 // Load test.properties
@@ -71,3 +67,4 @@ String[] testOrderList = properties.testList.split(',')
 }
 
 // /u/dbbAutomation/workspace/Automation_Jobs/DBB_All_BuildS/DBBZtoolkitTar/bin/groovyz /u/dbbAutomation/workspace/Automation_Jobs/ZAppBuildTest/ZAppBuild/dbb-zappbuild/test/test.groovy -r /u/dbbAutomation/workspace/Automation_Jobs/ZAppBuildTest/ZAppBuild/dbb-zappbuild -b AutomationTest -a MortgageApplication -q IBMDBB.ZAPPB.BUILD -s https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/ -u ADMIN -p ADMIN -n 9 -f epsmort.bms,epsmlis.bms,epsnbrvl.cbl,epscsmrt.cbl,epsmlist.cbl,epsmpmt.cbl,epscmort.cbl,epscsmrd.cbl,epsmlist.lnk -i epsmort.bms,epscmort.cbl -m 2 -c /bms/epsmort.bms
+// /u/dbbAutomation/workspace/Automation_Jobs/DBB_All_BuildS/DBBZtoolkitTar/bin/groovyz /u/dbbAutomation/workspace/Automation_Jobs/ZAppBuildTest/ZAppBuild/dbb-zappbuild/test/test.groovy -r /u/dbbAutomation/workspace/Automation_Jobs/ZAppBuildTest/ZAppBuild/dbb-zappbuild -b AutomationTest -a MortgageApplication -q IBMDBB.ZAPPB.BUILD -s https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/ -u ADMIN -p ADMIN -f epsmort.bms,epsmlis.bms,epsnbrvl.cbl,epscsmrt.cbl,epsmlist.cbl,epsmpmt.cbl,epscmort.cbl,epscsmrd.cbl,epsmlist.lnk -i epsmort.bms,epscmort.cbl -c /bms/epsmort.bms

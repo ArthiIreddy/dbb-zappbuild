@@ -4,7 +4,7 @@ import com.ibm.dbb.*
 import com.ibm.dbb.build.*
 
 @Field BuildProperties properties = BuildProperties.getInstance()
-//println "/////********Executing impact build using these build properties\n${properties.list()}\n"
+println "/////********Executing impact build using these build properties\n${properties.list()}\n"
 /******************************************************************************************
 1. Edits the file for incremental build 
 2. Runs a incremental/impact build based on file changed
@@ -17,9 +17,8 @@ import com.ibm.dbb.build.*
 @param userName         User for server
 @param password         Password for server
 @param impactFiles      Impact build files for verification
-@param numImpactFiles   Number of files expected for impact build verification
 *******************************************************************************************/
-/*String dbbHome = EnvVars.getHome();
+String dbbHome = EnvVars.getHome();
 
 def runImpactBuild = """
     mv ${properties.repoPath}/test/samples/${properties.app}${properties.programFile} ${properties.repoPath}/samples/${properties.app}${properties.programFile}
@@ -32,13 +31,16 @@ def task = ['bash', '-c', runImpactBuild].execute()
 def outputStream = new StringBuffer();
 task.waitForProcessOutput(outputStream, System.err)
 
+def list = properties.impactFiles
+def listNew = list.split(',')
+def numImpactFiles = listNew.size()
 assert outputStream.contains("Build State : CLEAN") &&
       !outputStream.contains("Total files processed : 0") &&
-       outputStream.contains("Total files processed : ${properties.numImpactFiles}") : "///***IMPACT BUILD FAILED OR TOTAL FILES PROCESSED IS NOT EQUAL TO ${properties.numImpactFiles}.\n HERE IS THE OUTPUT FROM IMPACT BUILD FOR ${properties.programFile} \n$outputStream\n"
+       outputStream.contains("Total files processed : ${numImpactFiles}") : "///***IMPACT BUILD FAILED OR TOTAL FILES PROCESSED IS NOT EQUAL TO ${numImpactFiles}.\n HERE IS THE OUTPUT FROM IMPACT BUILD FOR ${properties.programFile} \n$outputStream\n"
 
 def files = properties.impactFiles
 List<String> fileList = []
 if (files) {
     fileList.addAll(files.trim().split(','))
     assert fileList.count{ i-> outputStream.contains(i) } == fileList.size() : "///***FILES PROCESSED IN THE IMPACT BUILD FOR ${properties.programFile} DOES NOT CONTAIN THE LIST OF FILES PASSED ${fileList}.\n HERE IS THE OUTPUT FROM IMPACT BUILD \n$outputStream\n"
-}*/
+}
