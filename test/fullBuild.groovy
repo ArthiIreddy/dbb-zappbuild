@@ -21,11 +21,10 @@ println "/////********Executing full build using these build properties\n${prope
 @param password              Password for server
 @param fullFiles             Build files for verification
 ******************************************************************************************/
-def dbbHome = EnvVars.getHome();
+def dbbHome = EnvVars.getHome()
 
-def zAppBuildDir = getScriptDir();
-println "***This is zAppBuildDir home****: ${zAppBuildDir}"
-
+def zAppBuildDir = getScriptDir()
+println "***This is zAppBuildDir home****:${zAppBuildDir}"
 println "***This is dbb home****:${dbbHome}"
 
 /*def runFullBuild = """
