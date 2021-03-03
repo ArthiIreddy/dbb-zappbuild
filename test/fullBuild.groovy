@@ -35,10 +35,11 @@ def process = ['bash', '-c', runFullBuild].execute()
 def outputStream = new StringBuffer();
 process.waitForProcessOutput(outputStream, System.err)
 
-def list = properties.fullFiles
-println list
-println list.count
-println list.size()
+
+String[] test = properties.fullFiles 
+def arrayLength = test.size()
+println "The length of the array is: " + arrayLength
+
 
 
 /*
