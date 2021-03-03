@@ -29,10 +29,16 @@ test.groovy script has nine required arguments that must be present during each 
 * --programFile <arg> - Folder of the program to edit (example: /bms/epsmort.bms)
 
 
-Example of running an end to end test:
+Examples of running an end to end test:
+
+With zRepoPath passed in as an argument
 ```
-$DBB_HOME/bin/groovyz ${repoPath}/test/test.groovy -r ${repoPath} -b AutomationTest -a MortgageApplication -q IBMDBB.ZAPPB.BUILD -s https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/ -u ADMIN -p ADMIN -n 9 -f epsmort.bms,epsmlis.bms,epsnbrvl.cbl,epscsmrt.cbl,epsmlist.cbl,epsmpmt.cbl,epscmort.cbl,epscsmrd.cbl,epsmlist.lnk -c /bms/epsmort.bms -m 2 -i epsmort.bms,epscmort.cbl
+$DBB_HOME/bin/groovyz ${repoPath}/test/test.groovy -z ${repoPath} -b AutomationTest -a MortgageApplication -q IBMDBB.ZAPPB.BUILD -s https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/ -u ADMIN -p ADMIN -f epsmort.bms,epsmlis.bms,epsnbrvl.cbl,epscsmrt.cbl,epsmlist.cbl,epsmpmt.cbl,epscmort.cbl,epscsmrd.cbl,epsmlist.lnk -c /bms/epsmort.bms -i epsmort.bms,epscmort.cbl
 ``` 
+Without zRepoPath passed in as an argument
+```
+$DBB_HOME/bin/groovyz ${repoPath}/test/test.groovy -b AutomationTest -a MortgageApplication -q IBMDBB.ZAPPB.BUILD -s https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/ -u ADMIN -p ADMIN -f epsmo
+```
 
 ## Command Line Options Summary
 ```
