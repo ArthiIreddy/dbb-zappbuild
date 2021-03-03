@@ -36,7 +36,8 @@ def outputStream = new StringBuffer();
 process.waitForProcessOutput(outputStream, System.err)
 
 def list = properties.fullFiles
-println list 
+println list
+println list.count
 println list.size()
 
 
