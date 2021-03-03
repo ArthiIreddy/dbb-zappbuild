@@ -35,15 +35,14 @@ def process = ['bash', '-c', runFullBuild].execute()
 def outputStream = new StringBuffer();
 process.waitForProcessOutput(outputStream, System.err)
 
-def files = properties.fullFiles
-def numFiles = files.size
-
+def numFiles = properties.fullFiles.size
 println "THIS IS THE NUMBER OF FILES ${numFiles}"
+
 /*
 assert outputStream.contains("Build State : CLEAN") &&
        outputStream.contains("Total files processed : ${properties.numFullFiles}") : "///***EITHER THE FULLBUILD FAILED OR TOTAL FILES PROCESSED ARE NOT EQUAL TO ${properties.numFullFiles}.\n HERE IS THE OUTPUT FROM FULLBUILD \n$outputStream\n"
 
-
+def files = properties.fullFiles
 List<String> fileList = []
 if (files) {
     fileList.addAll(files.trim().split(',')) 
