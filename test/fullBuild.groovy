@@ -38,8 +38,7 @@ process.waitForProcessOutput(outputStream, System.err)
 def list = properties.fullFiles
 def listA = list.split(',')
 def numFullFiles = listA.size()
-assert outputStream.contains("Build State : CLEAN") && outputStream.contains("Total files processed : ${properties.numFullFiles}")
-	   && outputStream.contains("Total files processed : ${numFullFiles}") : "///***EITHER THE FULLBUILD FAILED OR TOTAL FILES PROCESSED ARE NOT EQUAL TO ${numFullFiles}.\n HERE IS THE OUTPUT FROM FULLBUILD \n$outputStream\n"
+assert outputStream.contains("Build State : CLEAN") && outputStream.contains("Total files processed : ${properties.numFullFiles}") && outputStream.contains("Total files processed : ${numFullFiles}") : "///***EITHER THE FULLBUILD FAILED OR TOTAL FILES PROCESSED ARE NOT EQUAL TO ${numFullFiles}.\n HERE IS THE OUTPUT FROM FULLBUILD \n$outputStream\n"
 	
 
 def files = properties.fullFiles
