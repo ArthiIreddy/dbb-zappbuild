@@ -14,8 +14,10 @@ impactBuild.groovy | This script that is called by test.groovy to run an impact 
 # Testing Applications with zAppBuild
 The main script for testing applications against zAppBuild is `test.groovy`. It takes most of its input from the command line to run full and impact builds. `test.groovy` once executed from the command line calls `initialization.groovy`, `fullBuild.groovy` and `impactBuild.groovy` scripts to perform an end to end test on the given feature branch with the program specified for impact build. 
 
-test.groovy script has tweleve required arguments that must be present during each invocation:
-* --repoPath <arg> - Path to the cloned/forked zAppBuild repository
+test.groovy script has one optional argument that can be present during each invocation:
+* --zRepoPath <arg> - Optional path to ZAppBuild Repo
+
+test.groovy script has nine required arguments that must be present during each invocation:
 * --branchName <arg> - Feature branch that needs to be tested
 * --app <arg> - Application that is being tested (example: MortgageApplication)
 * --serverURL <arg> - Server URL 
@@ -24,8 +26,6 @@ test.groovy script has tweleve required arguments that must be present during ea
 * --password <arg> - Password for server
 * --fullFiles <arg> - Full build files for verification
 * --impactFiles <arg> - Impact build files for verification
-* --numFullFiles <arg> - Number of files expected for full build verification
-* --numImpactFiles <arg> - Number of files expected for impact build verification
 * --programFile <arg> - Folder of the program to edit (example: /bms/epsmort.bms)
 
 
@@ -36,8 +36,10 @@ $DBB_HOME/bin/groovyz ${repoPath}/test/test.groovy -r ${repoPath} -b AutomationT
 
 ## Command Line Options Summary
 ```
-required options:
- -r --repoPath <arg>   Path to the cloned/forked zAppBuild repository
+optional arguments:
+-z --zRepoPath <arg>   Path to the cloned/forked zAppBuild repository
+
+required arguments:
  -b --branchName <arg> Feature Branch that needs to be tested 
  -a --app <arg> Application that is being tested (example: MortgageApplication)
  -s --serverURL <arg> Server URL
@@ -46,11 +48,9 @@ required options:
  -p --password <arg> Password for server
  -f --fullFiles <arg> Full build files for verification
  -i --impactFiles <arg> Impact build files for verification
- -n --numFullFiles <arg> Number of files expected for full build verification
- -m --numImpactFiles <arg> Number of files expected for impact build verification
  -c --programFile <arg> Folder of the program to edit (example: /bms/epsmort.bms)
 
-utility options
+utility arguments:
  -h ,--help           Shows usage information, like above
  ```
 
@@ -58,8 +58,10 @@ utility options
 This script that is called by test.groovy to clean “automation” test branch created for testing purposes from the feature branch that‘s to be tested and hlq from the previous run.
 
 ```
+Optional arguments:
+ -z --zRepoPath <arg>   Path to the cloned/forked zAppBuild repository
+
 Required arguments that must be present during each invocation of `test.groovy`
- -r --repoPath <arg>   Path to the cloned/forked zAppBuild repository
  -b --branchName <arg> Feature Branch that needs to be tested 
  -q --hlq <arg> hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)
 ```
@@ -71,8 +73,10 @@ This script is called by test.groovy to run a full build by creating a new “au
 - Build files expected passsed via command line matches the build files during the full build in the console.
 
 ```
+Optional arguments:
+ -z --zRepoPath <arg>   Path to the cloned/forked zAppBuild repository
+
 Required arguments that must be present during each invocation of `test.groovy`
- -r --repoPath <arg>   Path to the cloned/forked zAppBuild repository
  -b --branchName <arg> Feature Branch that needs to be tested 
  -a --app <arg> Application that is being tested (example: MortgageApplication)
  -s --serverURL <arg> Server URL
@@ -80,7 +84,6 @@ Required arguments that must be present during each invocation of `test.groovy`
  -u --userName <arg> User for server
  -p --password <arg> Password for server
  -f --fullFiles <arg> Full build files for verification
- -n --numFullFiles <arg> Number of files expected for full build verification
 ```
 
 ## impactBuild.groovy
@@ -90,8 +93,10 @@ This script that is called by test.groovy to run an impact build against the pro
 - Build files expected passsed via command line matches the build files during the impact build in the console.
 
 ```
+Optional arguments:
+ -z --zRepoPath <arg>   Path to the cloned/forked zAppBuild repository
+
 Required arguments that must be present during each invocation of `test.groovy`
- -r --repoPath <arg>   Path to the cloned/forked zAppBuild repository
  -b --branchName <arg> Feature Branch that needs to be tested 
  -a --app <arg> Application that is being tested (example: MortgageApplication)
  -s --serverURL <arg> Server URL
@@ -99,7 +104,6 @@ Required arguments that must be present during each invocation of `test.groovy`
  -u --userName <arg> User for server
  -p --password <arg> Password for server
  -i --impactFiles <arg> Impact build files for verification
- -m --numImpactFiles <arg> Number of files expected for impact build verification
  -c --programFile <arg> Folder of the program to edit (example: /bms/epsmort.bms)
 ```
 
