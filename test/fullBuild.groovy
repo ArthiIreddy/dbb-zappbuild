@@ -6,19 +6,11 @@ import com.ibm.dbb.*
 import com.ibm.dbb.build.*
 
 @Field BuildProperties properties = BuildProperties.getInstance()
-println "/////********EXECUTING FULL BUILD USING THESE BUILD PROPERTIES\nzRepoPath: Optional path to ZAppBuild Repo\n
-\nbranchName: Feature branch to create a test(automation) branch against\n
-\napp: Application that is being tested (example: MortgageApplication)\n
-\nhlq: hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)\n
-\nserverURL: Server URL example(https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/)\n
-\nuserName: User for server\n
-\npassword: Password for server\n
-\nfullFiles: Build files for verification\n"
+println "/////********EXECUTING FULL BUILD USING THESE BUILD PROPERTIES\nzRepoPath: Optional path to ZAppBuild Repo\nbranchName: Feature branch to create a test(automation) branch against\napp: Application that is being tested (example: MortgageApplication)\nhlq: hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)\nserverURL: Server URL example(https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/)\nuserName: User for server\npassword: Password for server\nfullFiles: Build files for verification\n"
 /****************************************************************************************
 1. Creates an automation branch from ${branchName} 
-2. Sets the values up for datasets in the datasets.properties
-3. Cleans up test PDSEs
-4. Runs a full build using mortgage application
+2. Cleans up test PDSEs
+3. Runs a full build using mortgage application
 @param zRepoPath             Optional path to ZAppBuild Repo
 @param branchName            Feature branch to create a test(automation) branch against
 @param app                   Application that is being tested (example: MortgageApplication)

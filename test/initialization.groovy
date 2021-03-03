@@ -7,8 +7,7 @@ import com.ibm.dbb.build.*
 import com.ibm.jzos.ZFile
  
 @Field BuildProperties properties = BuildProperties.getInstance()
-println "/////********EXECUTING INITIALIZATION SCRIPT USING THESE BUILD PROPERTIES\nzRepoPath: Optional path to ZAppBuild Repo\n 
-\nbranchName: Feature branch to create a test(automation) branch against\n"
+println "/////********EXECUTING INITIALIZATION SCRIPT USING THESE BUILD PROPERTIES\nzRepoPath: Optional path to ZAppBuild Repo\nbranchName: Feature branch to create a test(automation) branch against\n"
 /***************************************************************************************
 1. Discards the changes on the automation test branch
 2. Checkout's out the feature branch ${branchName}
