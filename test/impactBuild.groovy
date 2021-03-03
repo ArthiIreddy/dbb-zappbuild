@@ -6,7 +6,7 @@ import com.ibm.dbb.*
 import com.ibm.dbb.build.*
 
 @Field BuildProperties properties = BuildProperties.getInstance()
-println "/////********EXECUTING IMPACT BUILD USING THESE BUILD PROPERTIES\nserverURL: Server URL example(https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/)\nzRepoPath: Optional path to ZAppBuild Repo\nprogramFile: Path to the program folder for the file to be edited\napp: Application that is being tested (example: MortgageApplication)\nhlq: hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)\nuserName: User for server\npassword: Password for server\nimpactFiles: Impact build files for verification\n"
+println "\n/////********EXECUTING IMPACT BUILD USING THESE BUILD PROPERTIES\nserverURL: Server URL example(https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/)\nzRepoPath: Optional path to ZAppBuild Repo\nprogramFile: Path to the program folder for the file to be edited\napp: Application that is being tested (example: MortgageApplication)\nhlq: hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)\nuserName: User for server\npassword: Password for server\nimpactFiles: Impact build files for verification\n"
 /******************************************************************************************
 1. Edits the file for incremental build 
 2. Runs a incremental/impact build based on file changed
@@ -20,8 +20,6 @@ println "/////********EXECUTING IMPACT BUILD USING THESE BUILD PROPERTIES\nserve
 @param impactFiles      Impact build files for verification
 *******************************************************************************************/
 def dbbHome = EnvVars.getHome()
-println "***This is dbb home****" + dbbHome
-
 def runImpactBuild
 
 if (properties.z || properties.zRepoPath){

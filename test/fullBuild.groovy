@@ -6,7 +6,7 @@ import com.ibm.dbb.*
 import com.ibm.dbb.build.*
 
 @Field BuildProperties properties = BuildProperties.getInstance()
-println "/////********EXECUTING FULL BUILD USING THESE BUILD PROPERTIES\nzRepoPath: Optional path to ZAppBuild Repo\nbranchName: Feature branch to create a test(automation) branch against\napp: Application that is being tested (example: MortgageApplication)\nhlq: hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)\nserverURL: Server URL example(https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/)\nuserName: User for server\npassword: Password for server\nfullFiles: Build files for verification\n"
+println "\n/////********EXECUTING FULL BUILD USING THESE BUILD PROPERTIES\nzRepoPath: Optional path to ZAppBuild Repo\nbranchName: Feature branch to create a test(automation) branch against\napp: Application that is being tested (example: MortgageApplication)\nhlq: hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)\nserverURL: Server URL example(https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/)\nuserName: User for server\npassword: Password for server\nfullFiles: Build files for verification\n"
 /****************************************************************************************
 1. Creates an automation branch from ${branchName} 
 2. Cleans up test PDSEs
