@@ -30,8 +30,9 @@ def runImpactBuild = """
 def task = ['bash', '-c', runImpactBuild].execute()
 def outputStream = new StringBuffer();
 task.waitForProcessOutput(outputStream, System.err)
+println outputStream
 
-def list = properties.impactFiles
+/*def list = properties.impactFiles
 def listNew = list.split(',')
 def numImpactFiles = listNew.size()
 assert outputStream.contains("Build State : CLEAN") &&
@@ -43,4 +44,4 @@ List<String> fileList = []
 if (files) {
     fileList.addAll(files.trim().split(','))
     assert fileList.count{ i-> outputStream.contains(i) } == fileList.size() : "///***FILES PROCESSED IN THE IMPACT BUILD FOR ${properties.programFile} DOES NOT CONTAIN THE LIST OF FILES PASSED ${fileList}.\n HERE IS THE OUTPUT FROM IMPACT BUILD \n$outputStream\n"
-}
+}*/
