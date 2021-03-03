@@ -6,13 +6,20 @@ import com.ibm.dbb.*
 import com.ibm.dbb.build.*
 
 @Field BuildProperties properties = BuildProperties.getInstance()
-println "/////********EXECUTING FULL BUILD USING THESE BUILD PROPERTIES\n${properties.list()}\n"
+println "/////********EXECUTING FULL BUILD USING THESE BUILD PROPERTIES\nzRepoPath: Optional path to ZAppBuild Repo\n
+\nbranchName: Feature branch to create a test(automation) branch against\n
+\napp: Application that is being tested (example: MortgageApplication)\n
+\nhlq: hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)\n
+\nserverURL: Server URL example(https://dbbdev.rtp.raleigh.ibm.com:19443/dbb/)\n
+\nuserName: User for server\n
+\npassword: Password for server\n
+\nfullFiles: Build files for verification\n"
 /****************************************************************************************
 1. Creates an automation branch from ${branchName} 
 2. Sets the values up for datasets in the datasets.properties
 3. Cleans up test PDSEs
 4. Runs a full build using mortgage application
-@param repoPath              Path to ZAppBuild Repo
+@param zRepoPath             Optional path to ZAppBuild Repo
 @param branchName            Feature branch to create a test(automation) branch against
 @param app                   Application that is being tested (example: MortgageApplication)
 @param hlq                   hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)
@@ -24,17 +31,27 @@ println "/////********EXECUTING FULL BUILD USING THESE BUILD PROPERTIES\n${prope
 def dbbHome = EnvVars.getHome()
 println "***This is dbb home****" + dbbHome
 
-def zAppBuildDirTest = getScriptDir()
-def zAppBuildDir = zAppBuildDirTest.replace("/test","")
-println "***This is zAppBuildDir home****:" + zAppBuildDir
-
-/*def runFullBuild = """
-    cd ${properties.repoPath}
+if (properties.z || properties.zRepoPath){
+ def runFullBuild = """
+    cd ${properties.zRepoPath}
     git checkout ${properties.branchName}
     git checkout -b automation ${properties.branchName}
-    mv ${properties.repoPath}/test/samples/${properties.app}/datasets.properties ${properties.repoPath}/build-conf/datasets.properties
-    ${dbbHome}/bin/groovyz ${properties.repoPath}/build.groovy --workspace ${properties.repoPath}/samples --application ${properties.app} --outDir ${properties.repoPath}/out --hlq ${properties.hlq} --logEncoding UTF-8 --url ${properties.serverURL} --id ${properties.userName} --pw ${properties.password} --fullBuild
+    mv ${properties.zRepoPath}/test/samples/${properties.app}/datasets.properties ${properties.zRepoPath}/build-conf/datasets.properties
+    ${dbbHome}/bin/groovyz ${properties.zRepoPath}/build.groovy --workspace ${properties.zRepoPath}/samples --application ${properties.app} --outDir ${properties.zRepoPath}/out --hlq ${properties.hlq} --logEncoding UTF-8 --url ${properties.serverURL} --id ${properties.userName} --pw ${properties.password} --fullBuild
 """
+} else{
+    def zAppBuildDirTest = getScriptDir()
+    def zAppBuildDir = zAppBuildDirTest.replace("/test","")
+    println "***This is zAppBuildDir home****:" + zAppBuildDir
+    def runFullBuild = """
+    cd ${zAppBuildDir}
+    git checkout ${properties.branchName}
+    git checkout -b automation ${properties.branchName}
+    mv ${zAppBuildDir}/test/samples/${properties.app}/datasets.properties ${zAppBuildDir}/build-conf/datasets.properties
+    ${dbbHome}/bin/groovyz ${zAppBuildDir}/build.groovy --workspace ${zAppBuildDir}/samples --application ${properties.app} --outDir ${zAppBuildDir}/out --hlq ${properties.hlq} --logEncoding UTF-8 --url ${properties.serverURL} --id ${properties.userName} --pw ${properties.password} --fullBuild
+"""
+}
+
 def process = ['bash', '-c', runFullBuild].execute()
 def outputStream = new StringBuffer();
 process.waitForProcessOutput(outputStream, System.err)
@@ -49,4 +66,4 @@ List<String> fileList = []
 if (files) {
   fileList.addAll(files.trim().split(',')) 
   assert fileList.count{ i-> outputStream.contains(i) } == fileList.size() : "///***FILES PROCESSED IN THE FULLBUILD DOES NOT CONTAIN THE LIST OF FILES PASSED ${fileList}.\n HERE IS THE OUTPUT FROM FULLBUILD \n$outputStream\n"
-}*/
+}

@@ -18,16 +18,16 @@ def cli = new CliBuilder(
 cli.with
 {
    h(longOpt: 'help', 'Show usage information')
-   r(longOpt: 'repoPath', 'Repo Path', args: 1, required: true)
-   b(longOpt: 'branchName', 'Feature Branch', args: 1, required: true)
+   z(longOpt: 'zRepoPath', 'Optional path to ZAppBuild Repo', args: 1, required: false)
+   b(longOpt: 'branchName', 'Feature branch to create a test(automation) branch against', args: 1, required: true)
    a(longOpt: 'app', 'Application that is being tested (example: MortgageApplication)', args: 1, required: true)
    s(longOpt: 'serverURL', 'Server URL', args: 1, required: true)
    q(longOpt: 'hlq', 'hlq to delete segments from (example: IBMDBB.ZAPP.BUILD)', args: 1, required: true)
    u(longOpt: 'userName', 'User for server', args: 1, required: true)
    p(longOpt: 'password', 'Password for server', args: 1, required: true)
-   f(longOpt: 'fullFiles', 'Full build files for verification', args:1, required: true)
-   i(longOpt: 'impactFiles', 'Impact build files for verification', args:1, required: true)
-   c(longOpt: 'programFile', 'Path of the program to edit (example: /bms/epsmort.bms)', args: 2, required: true)
+   f(longOpt: 'fullFiles', 'List of Full build files expected for verification', args:1, required: true)
+   i(longOpt: 'impactFiles', 'List of Impact build files expected for verification', args:1, required: true)
+   c(longOpt: 'programFile', 'Path to the program folder for the file to be edited (example: /bms/epsmort.bms)', args: 2, required: true)
 }
 
 def options = cli.parse(args)
@@ -41,7 +41,7 @@ def options = cli.parse(args)
     }
 
 // set command line arguments
-if (options.r) properties.repoPath = options.r
+if (options.z) properties.zRepoPath = options.z
 if (options.b) properties.branchName = options.b
 if (options.a) properties.app = options.a
 if (options.s) properties.serverURL = options.s
