@@ -6,7 +6,7 @@ import com.ibm.dbb.*
 import com.ibm.dbb.build.*
 
 @Field BuildProperties properties = BuildProperties.getInstance()
-println "/////********Executing full build using these build properties\n${properties.list()}\n"
+println "/////********EXECUTING FULL BUILD USING THESE BUILD PROPERTIES\n${properties.list()}\n"
 /****************************************************************************************
 1. Creates an automation branch from ${branchName} 
 2. Sets the values up for datasets in the datasets.properties
@@ -22,10 +22,11 @@ println "/////********Executing full build using these build properties\n${prope
 @param fullFiles             Build files for verification
 ******************************************************************************************/
 def dbbHome = EnvVars.getHome()
+println "***This is dbb home****" + dbbHome
 
-def zAppBuildDir = getScriptDir()
-println zAppBuildDir
-println dbbHome
+def zAppBuildDirTest = getScriptDir()
+def zAppBuildDir = zAppBuildDirTest.replace("/test","")
+println "***This is zAppBuildDir home****:" + zAppBuildDir
 
 /*def runFullBuild = """
     cd ${properties.repoPath}
