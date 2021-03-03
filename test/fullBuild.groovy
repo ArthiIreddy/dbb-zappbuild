@@ -1,3 +1,5 @@
+groovy.transform.BaseScript com.ibm.dbb.groovy.ScriptLoader baseScript
+
 import groovy.transform.*
 import org.apache.commons.cli.Option
 import com.ibm.dbb.*
@@ -19,11 +21,14 @@ println "/////********Executing full build using these build properties\n${prope
 @param password              Password for server
 @param fullFiles             Build files for verification
 ******************************************************************************************/
-String dbbHome = EnvVars.getHome();
+def dbbHome = EnvVars.getHome();
+
+def zAppBuildDir = getScriptDir();
+println "***This is zAppBuildDir home****: ${zAppBuildDir}"
 
 println "***This is dbb home****:${dbbHome}"
 
-def runFullBuild = """
+/*def runFullBuild = """
     cd ${properties.repoPath}
     git checkout ${properties.branchName}
     git checkout -b automation ${properties.branchName}
@@ -44,4 +49,4 @@ List<String> fileList = []
 if (files) {
   fileList.addAll(files.trim().split(',')) 
   assert fileList.count{ i-> outputStream.contains(i) } == fileList.size() : "///***FILES PROCESSED IN THE FULLBUILD DOES NOT CONTAIN THE LIST OF FILES PASSED ${fileList}.\n HERE IS THE OUTPUT FROM FULLBUILD \n$outputStream\n"
-}
+}*/
